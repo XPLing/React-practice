@@ -12,7 +12,9 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "flux-standard-action": "^2.1.1",
+    "is-promise": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
