@@ -10,8 +10,8 @@ export default function applyMiddleware (...middlewares) {
     const middlewareChain = middlewares.map(middle => middle(midApi));
     // 拦截dispatch
     dispatch = compose(...middlewareChain)(store.dispatch);
-    console.log(middlewareChain);
-    console.log(dispatch.toString());
+    // console.log(middlewareChain);
+    // console.log(dispatch.toString());
     return {
       ...store,
       dispatch

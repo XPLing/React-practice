@@ -10,13 +10,13 @@ class ReduxPage extends Component {
 
   add = () => {
     store.dispatch({
-      type: 'ADD'
+      type: 'INCREMENT'
     });
   };
   asyncAdd = () => {
     store.dispatch((dispatch, getState) => {
       setTimeout(() => {
-        dispatch({ type: 'ADD' });
+        dispatch({ type: 'INCREMENT' });
         console.log('getState', getState()); //sy-log
       }, 1000);
     });
@@ -29,13 +29,13 @@ class ReduxPage extends Component {
   };
 
   render () {
+    console.log(store.getState())
     return (
       <div>
         <h3>Redux Page</h3>
-        <p>{store.getState()}</p>
+        <p>{store.getState().counter}</p>
         <button onClick={this.add}>Add</button>
         <button onClick={this.asyncAdd}>Add Async</button>
-        <button onClick={this.minus}>Minus</button>
       </div>
     );
   }

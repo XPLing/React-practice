@@ -1,21 +1,22 @@
-// import { applyMiddleware } from 'redux';
-import { createStore, applyMiddleware } from '../components/k-redux';
+// import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from '../components/k-redux'
 // import thunk from 'redux-thunk';
-
 // import logger from 'redux-logger';
+import reducer from './reducer'
 
 function countReducer (state = 0, action) {
   switch (action.type) {
     case 'ADD':
-      return state + 1;
+      return state + 1
     case 'MINUS':
-      return state - 1;
+      return state - 1
     default:
-      return state;
+      return state
   }
 }
 
-const store = createStore(countReducer, applyMiddleware(thunk, logger));
+console.log(reducer)
+const store = createStore(reducer, applyMiddleware(thunk, logger))
 
 function logger ({ getState }) {
   return next => action => {
@@ -24,14 +25,14 @@ function logger ({ getState }) {
     // console.log('************');
     // console.log('pre state');
     // console.log(getState());
-    const currentVal = next(action);
+    const currentVal = next(action)
     // console.log('action');
     // console.log(action);
     // console.log('current state');
     // console.log(getState());
     // console.log('************');
-    return currentVal;
-  };
+    return currentVal
+  }
 }
 
 function thunk ({ getState, dispatch }) {
@@ -40,11 +41,11 @@ function thunk ({ getState, dispatch }) {
     // console.log('*******************');
     // console.log(action);
     if (typeof action === 'function') {
-      return action(dispatch, getState);
+      return action(dispatch, getState)
     }
-    console.log(next);
-    return next(action);
-  };
+    // console.log(next)
+    return next(action)
+  }
 }
 
-export default store;
+export default store
